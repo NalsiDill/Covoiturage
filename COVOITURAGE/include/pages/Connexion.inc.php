@@ -9,11 +9,15 @@ if(empty($_POST['login']) && empty($_POST['pwd']) && empty($_POST['somme'])){
         Mot de passe :<br/>
         <input type="password" name="pwd" required/><br/>
         <?php
-        $n1 = rand(1,10);
-        $n2 = rand(1,10);
-        $n3 = rand(1,10);
+        $n1 = rand(1,9);
+        $n2 = rand(1,9);
+        $n3 = rand(1,9);
         $somme = $n1 + $n2 + $n3;
-        echo $n1." + ".$n2." + ".$n3." =";
+        echo "<img src=\"image/nb/".$n1.".jpg\" />"
+			. "+"
+			."<img src=\"image/nb/".$n2.".jpg\" />"
+			."+"
+			."<img src=\"image/nb/".$n3.".jpg\" />";
         ?>
         <br/>
         <input type="hidden" name="somme" value="<?php echo $somme ?>">
@@ -49,11 +53,15 @@ if(!empty($_POST['login']) && !empty($_POST['pwd']) && !empty($_POST['somme'])){
         Mot de passe :<br/>
         <input type="password" name="pwd" value="<?php echo $_POST['pwd'] ?>" required/><br/>
         <?php
-        $n1 = rand(1,10);
-        $n2 = rand(1,10);
-        $n3 = rand(1,10);
+        $n1 = rand(1,9);
+        $n2 = rand(1,9);
+        $n3 = rand(1,9);
         $somme = $n1 + $n2 + $n3;
-        echo $n1." + ".$n2." + ".$n3." =";
+        echo "<img src=\"image/nb/".$n1.".jpg\" />"
+			. "+"
+			."<img src=\"image/nb/".$n2.".jpg\" />"
+			."+"
+			."<img src=\"image/nb/".$n3.".jpg\" />";
         ?>
         <br/>
         <input type="hidden" name="somme" value="<?php echo $somme ?>">
