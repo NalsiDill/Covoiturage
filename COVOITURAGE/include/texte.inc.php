@@ -79,7 +79,7 @@ case 11:
     break;
 
 case 12:
-	// inclure ici la page de déconnexion
+	// inclure ici la page de dÃ©connexion
 	include_once('pages/Deconnexion.inc.php');
     break;    
     

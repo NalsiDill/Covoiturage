@@ -41,6 +41,8 @@ if(!empty($_POST['login']) && !empty($_POST['pwd']) && !empty($_POST['somme'])){
     }
     if($_POST['somme'] == $_POST['verifSomme'] && $existe == true){
         $_SESSION['login'] = $_POST['login'];
+		
+	header('location:index.php'); 
         echo "Vous êtes maintenant connecté sous le nom de ".$_POST['login']; 
 ?>
     
