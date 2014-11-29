@@ -28,15 +28,15 @@
 				<br />Partagez plus que votre véhicule !!!
 			</div>
 		</div>
-		<?php if($_SESSION[ 'login']==null){ ?>
+		<?php if($_SESSION['login']==null){ ?>
 		<div id="connect">
 			<a href="index.php?page=11">Connexion</a>
 		</div>
 		<?php } else { ?>
 		<div id="connect">
 			Utilisateur :
-			<?php echo $_SESSION[ 'login'] ?>
-			<a href="index.php?page=12"> Déconnexion</a>
+			<?php echo $_SESSION['login'] ?>
+			<a href="index.php?page=12">Déconnexion</a>
 		</div>
 		<?php } ?>
 
