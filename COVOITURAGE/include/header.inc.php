@@ -7,9 +7,9 @@
 
 	<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
 
-	<?php $title="Bienvenue sur le site de covoiturage de l'IUT." ;?>
+	<?php $title="Bienvenue sur le site de covoiturage de l'IUT."; ?>
 	<title>
-		<?php echo $title ?>
+		<?php echo $title; ?>
 	</title>
 
 	<link rel="stylesheet" type="text/css" href="css/stylesheet.css" />

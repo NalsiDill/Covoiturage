@@ -33,39 +33,68 @@ class ParcoursManager{
 		
 	}
 	
-	public function getAllVilles1(){
-		$listVilles1 = array();
+	public function getAllVillesDepart(){
+		$listVilles = array();
 		
-		$sql = 'SELECT vil_num, vil_nom FROM ville 
-		JOIN parcours on parcours.vil_num1 = ville.vil_num
+		$sql = 'SELECT vil_num, vil_nom FROM ville v 
+		JOIN parcours p on p.vil_num1 = v.vil_num
+		GROUP BY vil_nom
+        UNION
+        SELECT vil_num, vil_nom FROM ville v 
+		JOIN parcours p on p.vil_num2 = v.vil_num
 		GROUP BY vil_nom';
 		$req = $this->db->prepare($sql);
 		$req->execute();
 		
 		while($ville = $req->fetch(PDO::FETCH_OBJ)){
-			$listVilles1[] = new Ville($ville);
+			$listVilles[] = new Ville($ville);
 		}
 		$req->closeCursor();
 		
-		return $listVilles1;
+		return $listVilles;
 	}
 	
-	public function getAllVilles2($no_vil1){
-		$listVilles2 = array();
+	public function getAllVillesArrivée($no_vil1){
+		$listVilles = array();
 		
 		$sql = 'SELECT vil_num, vil_nom FROM ville 
 		JOIN parcours on parcours.vil_num2 = ville.vil_num
 		WHERE vil_num1 = :num
+		GROUP BY vil_nom
+        UNION
+        SELECT vil_num, vil_nom FROM ville 
+		JOIN parcours on parcours.vil_num1 = ville.vil_num
+		WHERE vil_num2 = :num
 		GROUP BY vil_nom';
+        $req = $this->db->prepare($sql);
 		$req->bindValue(':num', $no_vil1);
-		$req = $this->db->prepare($sql);
 		$req->execute();
 		
 		while($ville = $req->fetch(PDO::FETCH_OBJ)){
-			$listVilles2[] = new Ville($ville);
+			$listVilles[] = new Ville($ville);
 		}
 		$req->closeCursor();
 		
-		return $listVilles2;
+		return $listVilles;
 	}
+    
+    public function getParcoursByVilles($vil_num1, $vil_num2){
+        $req = $this->db->prepare('SELECT * FROM parcours
+            WHERE vil_num1 = :vil_num1
+            AND vil_num2 = :vil_num2
+            UNION
+            SELECT * FROM parcours
+            WHERE vil_num1 = :vil_num2
+            AND vil_num2 = :vil_num1');
+        $req->bindValue(':vil_num1', $vil_num1);
+        $req->bindValue(':vil_num2', $vil_num2);
+		$nom = $req->execute();
+		
+		while($parcours = $req->fetch(PDO::FETCH_OBJ)){
+			$parcourss = new Parcours($parcours);
+		}
+		$req->closeCursor();
+        
+		return $parcourss;
+    }
 }
