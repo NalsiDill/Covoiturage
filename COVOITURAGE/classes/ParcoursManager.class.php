@@ -97,4 +97,17 @@ class ParcoursManager{
         
 		return $parcourss;
     }
+	public function getParcoursById($par_num){
+		$req = $this->db->prepare('SELECT * FROM parcours WHERE par_num = :par_num');
+		$req->bindValue(':par_num', $par_num);
+		$nom = $req->execute();
+		
+		while($parcours = $req->fetch(PDO::FETCH_OBJ)){
+			$parcourss = new Parcours($parcours);
+		}
+		$req->closeCursor();
+        
+		return $parcourss;
+		
+	}
 }
