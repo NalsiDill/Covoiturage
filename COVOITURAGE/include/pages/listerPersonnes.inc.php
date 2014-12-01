@@ -21,11 +21,6 @@
 			<td>
 				<?php echo $personne->getPer_prenom(); ?>
 			</td>
-			<td>
-				<a href="index.php?page=4&noPers=<?php echo $personne->getPer_num();?>"> 
-					<img src="./image/erreur.png">
-				</a>
-			</td>
 		</tr>
 		<?php
 	} ?>
