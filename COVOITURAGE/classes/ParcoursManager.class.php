@@ -98,6 +98,7 @@ class ParcoursManager{
 		return $parcourss;
     }
 	public function getParcoursById($par_num){
+		$parcourss = array();
 		$req = $this->db->prepare('SELECT * FROM parcours WHERE par_num = :par_num');
 		$req->bindValue(':par_num', $par_num);
 		$nom = $req->execute();
@@ -106,7 +107,6 @@ class ParcoursManager{
 			$parcourss = new Parcours($parcours);
 		}
 		$req->closeCursor();
-        
 		return $parcourss;
 		
 	}

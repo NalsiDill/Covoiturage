@@ -20,6 +20,7 @@ $vManager = new VilleManager($db);
 		$vManager->getVilleByID($parcourss->getVil_num1())->getVil_nom(); ?> vers <?php echo 
 		$vManager->getVilleByID($parcourss->getVil_num2())->getVil_nom();
 		}else{
+        
 			echo $vManager->getVilleByID($parcourss->getVil_num2())->getVil_nom(); ?> vers <?php echo $vManager->getVilleByID($parcourss->getVil_num1())->getVil_nom();
 		}
 			
