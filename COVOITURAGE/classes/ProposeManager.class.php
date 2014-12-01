@@ -35,5 +35,30 @@ class ProposeManager{
 		return $listeProposes;
 		
 	}
+    
+    public function getVillesBySens(){
+        $listVilles = array();
+		
+		$sql = 'SELECT vil_num, vil_nom FROM ville v 
+		JOIN parcours p on p.vil_num1 = v.vil_num
+        JOIN propose pro on pro.par_num = p.par_num
+        WHERE pro_sens = 0
+		GROUP BY vil_nom
+        UNION
+        SELECT vil_num, vil_nom FROM ville v 
+		JOIN parcours p on p.vil_num2 = v.vil_num
+        JOIN propose pro on pro.par_num = p.par_num
+        WHERE pro_sens = 1
+		GROUP BY vil_nom';
+		$req = $this->db->prepare($sql);
+		$req->execute();
+		
+		while($ville = $req->fetch(PDO::FETCH_OBJ)){
+			$listVilles[] = new Ville($ville);
+		}
+		$req->closeCursor();
+		
+		return $listVilles;
+    }
 
 }
