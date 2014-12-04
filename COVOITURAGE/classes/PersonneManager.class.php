@@ -5,7 +5,7 @@ class PersonneManager{
 	public function __construct($db){
 		$this->db = $db;
 	}
-	
+	// ajout de personne dans la base
 	public function add($personne){
 		$req = $this->db->prepare(
 		'INSERT INTO Personne (per_nom, per_prenom, per_tel, per_mail, per_login, per_pwd) 
@@ -16,6 +16,22 @@ class PersonneManager{
 		$req->bindValue(':per_mail', $personne->getPer_mail());
 		$req->bindValue(':per_login', $personne->getPer_login());
 		$req->bindValue(':per_pwd', $personne->getPer_pwd());
+		
+		$retour = $req->execute();
+		
+		return $retour;
+	}
+	// modification de personne existante
+	public function update($personne){
+		$req = $this->db->prepare(
+		'UPDATE Personne 
+		SET per_nom = :per_nom, per_prenom = :per_prenom, per_tel = :per_tel, per_mail = :per_mail
+		WHERE per_num = :per_num');
+		$req->bindValue(':per_nom', $personne->getPer_nom());
+		$req->bindValue(':per_prenom', $personne->getPer_prenom());
+		$req->bindValue(':per_tel', $personne->getPer_tel());
+		$req->bindValue(':per_mail', $personne->getPer_mail());
+		$req->bindValue(':per_num', $personne->getPer_num());
 		
 		$retour = $req->execute();
 		
