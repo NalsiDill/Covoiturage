@@ -28,7 +28,7 @@
 				<br />Partagez plus que votre véhicule !!!
 			</div>
 		</div>
-		<?php if($_SESSION['login']==null){ ?>
+		<?php if(!isset($_SESSION['login'])){ ?>
 		<div id="connect">
 			<a href="index.php?page=11">Connexion</a>
 		</div>

@@ -19,7 +19,7 @@
 			<li><a href="index.php?page=8">Lister</a></li>
 		</ul>
 
-        <?php if ($_SESSION['login'] != null){ ?>
+        <?php if (!isset($_SESSION['login'])){ ?>
 		<p><img src="image/trajet.png" class="imagMenu" alt="Trajet"/>Trajet</p>
 		<ul>
 			<li><a href="index.php?page=9">Proposer</a></li>
