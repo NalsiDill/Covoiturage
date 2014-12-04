@@ -36,15 +36,22 @@ if(empty($_POST['vil_num1']) || empty($_POST['vil_num2']) || empty($_POST['nb_km
 }
 else{
 	$pManager = new ParcoursManager($db);
-	$parcours = new Parcours(array(
-		"par_km" => $_POST['nb_km'],
-		"vil_num1" => $_POST['vil_num1'],
-		"vil_num2" => $_POST['vil_num2']
-	));
-	$pManager->add($parcours);
-	?>
-	<img src="./image/valid.png" alt="Validé">
-	 Le parcours a été ajouté.
-<?php
+    
+    $parcoursVerif = $pManager->getParcoursByVillesWithOrdre($_POST['vil_num2'], $_POST['vil_num1']);
+    if($parcoursVerif != NULL){
+        
+    } else {
+    
+        $parcours = new Parcours(array(
+            "par_km" => $_POST['nb_km'],
+            "vil_num1" => $_POST['vil_num1'],
+            "vil_num2" => $_POST['vil_num2']
+        ));
+        $pManager->add($parcours);
+        ?>
+        <img src="./image/valid.png" alt="Validé">
+         Le parcours a été ajouté.
+    <?php
+    }
 }
 ?>

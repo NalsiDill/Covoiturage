@@ -35,6 +35,9 @@ $villesDepart = $proManager->getVillesBySens();
 */	?>
 </table>-->
 
+
+
+
 <?php 
 	if(empty($_POST['vil_depart']) && empty($_POST['vil_arrivee'])){
 ?>
@@ -49,6 +52,9 @@ Ville de départ :
 		</select>
 		<input type="submit" value="Valider" />
 	</form>
+
+
+
 
 <?php
 	} if (!empty($_POST['vil_depart']) && empty($_POST['vil_arrivee'])) {
@@ -95,7 +101,17 @@ Ville de départ :
 		<input type="submit" value="Valider" />
 	</form>
 <?php
-} if (!empty($_POST['vil_depart']) && !empty($_POST['vil_arrivee'])) {
+        
+        
+        
+        
+} if (empty($_POST['vil_depart']) && !empty($_POST['vil_arrivee'])) {
+        
+        if($_SESSION['vil_depart'] == $parcours->getVil_num1()){
+            $sens = 0;
+        } else {
+            $sens = 1;   
+        }
 ?>
     
 <?php } ?>

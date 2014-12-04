@@ -61,7 +61,25 @@ class ProposeManager{
 		return $listVilles;
     }
     
-    public function getVillesByRecherche($vi){
-        
+    public function getTrajetsByRecherche($par_num, $date, $precision, $heure, $sens){
+        $listTrajets = array();
+		
+		$sql = 'SELECT * FROM propose pro
+        JOIN parcours par on pro.par_num = par.par_num
+        WHERE ';
+		$req = $this->db->prepare($sql);
+        $req->bindValue(':par_num', $par_num);
+        $req->bindValue(':pro_date', $date);
+        $req->bindValue(':precision', $precision);
+        $req->bindValue(':heure', $heure);
+        $req->bindValue(':pro_sens', $sens);
+		$req->execute();
+		
+		while($propose = $req->fetch(PDO::FETCH_OBJ)){
+			$listTrajets[] = new Propose($propose);
+		}
+		$req->closeCursor();
+		
+		return $listTrajets;
     }
 }
