@@ -35,9 +35,10 @@ if(empty($_POST['nom']) &&				// Premier accès à la page
   Modifier les détails du compte "<?php echo $personne->getPer_login(); ?>"
 </p>
 	<form name="modifierPersonne" id="modifierPersonne" action="index.php?page=3" method="post">
-		Nom : <input type="text" name="nom" value="<?php echo $personne->getPer_nom() ?>" required/>
+		<?php $_SESSION['per_num'] = $_POST['noPers'] ?>
+		Nom : <input type="text" name="nom" value="<?php echo $personne->getPer_nom() ?>" required/><br/>
 		Prenom : <input type="text" name="prenom" value="<?php echo $personne->getPer_prenom() ?>" required/><br/>
-		Téléphone : <input type="text" name="telephone" value="<?php echo $personne->getPer_tel() ?>" required/>
+		Téléphone : <input type="text" name="telephone" value="<?php echo $personne->getPer_tel() ?>" required/><br/>
 		Mail : <input type="text" name="mail" value="<?php echo $personne->getPer_mail() ?>" required/><br/>
 			<input type="submit" value="Valider" />
 	</form>
@@ -46,7 +47,16 @@ if(empty($_POST['nom']) &&				// Premier accès à la page
 }
 else
 {
-	
+	// formulaire de modification bien rempli
+
+	$personne = new Personne(array(
+		"per_num" => $_SESSION['per_num'],
+		"per_nom" => $_POST['nom'],
+		"per_prenom" => $_POST['prenom'],
+		"per_tel" => $_POST['telephone'],
+		"per_mail" => $_POST['mail']
+	));
+	$pManager->update($personne);
 ?>
 
 
