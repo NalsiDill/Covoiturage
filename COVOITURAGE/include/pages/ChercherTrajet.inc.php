@@ -2,7 +2,6 @@
 <?php
 $db = new MyPdo();
 $proManager = new ProposeManager($db);
-/*$trajetsProposes = $proManager->getAllProposes();*/
 $pManager = new ParcoursManager($db);
 $vManager = new VilleManager($db);
 $villesDepart = $proManager->getVillesBySens();
@@ -34,7 +33,6 @@ $villesDepart = $proManager->getVillesBySens();
 	}
 */	?>
 </table>-->
-
 
 
 
@@ -106,12 +104,46 @@ Ville de départ :
         
         
 } if (empty($_POST['vil_depart']) && !empty($_POST['vil_arrivee'])) {
+        $parcoursAssocie = $pManager->getParcoursByVilles($_SESSION['vil_depart'], $_POST['vil_arrivee']);
+        $par_num = $parcoursAssocie->getPar_num();
         
-        if($_SESSION['vil_depart'] == $parcours->getVil_num1()){
+        $dateAvant = removeJours($_POST['date'], $_POST['precision']);
+        $dateApres = addJours($_POST['date'], $_POST['precision']);
+        
+        $heure = $_POST['apartirde'];
+        $heure = $heure.':00:00';
+        
+        if($_SESSION['vil_depart'] == $parcoursAssocie->getVil_num1()){
             $sens = 0;
         } else {
             $sens = 1;   
         }
+        
+        $listeTrajets = $proManager->getTrajetsByRecherche($par_num, $dateAvant, $dateApres, $heure, $sens);
+        
+         /*if*/
 ?>
-    
-<?php } ?>
+<?php  
+    $perManager = new PersonneManager($db);
+?>
+    <table border=1>
+	<tr><th>Ville de départ</th><th>Ville arrivée</th><th>Date départ</th><th>Heure départ</th><th>Nombres de place(s)</th><th>Nom du covoitureur</th></tr>
+	<?php 
+	foreach ($listeTrajets as $trajet){
+		$pers = $perManager->getPersonneByID($trajet->getPer_num());
+        $vil1 = $vManager->getVilleByID($_SESSION['vil_depart']);
+        $vil2 = $vManager->getVilleByID($_POST['vil_arrivee']); 
+	?>
+		<tr>
+			<td><?php echo $vil1->getVil_nom(); ?></td>
+            <td><?php echo $vil2->getVil_nom(); ?></td>
+            <td><?php echo $trajet->getPro_date(); ?></td>
+            <td><?php echo $trajet->getPro_time(); ?></td>
+            <td><?php echo $trajet->getPro_place(); ?></td>
+            <td><?php echo $pers->getPer_nom(); ?></td>
+        </tr>
+        <?php } ?>
+    </table>
+<?php 
+    }
+?>

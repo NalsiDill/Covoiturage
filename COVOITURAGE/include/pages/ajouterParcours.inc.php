@@ -37,9 +37,13 @@ if(empty($_POST['vil_num1']) || empty($_POST['vil_num2']) || empty($_POST['nb_km
 else{
 	$pManager = new ParcoursManager($db);
     
-    $parcoursVerif = $pManager->getParcoursByVillesWithOrdre($_POST['vil_num2'], $_POST['vil_num1']);
-    if($parcoursVerif != NULL){
-        
+    $parcoursVerif = $pManager->getParcoursByVilles($_POST['vil_num2'], $_POST['vil_num1']);
+    
+    if($parcoursVerif->getPar_num() != null){
+        ?>
+        <img src="./image/erreur.png" alt="Pas Validé">
+         Ce parcours existe déjà !
+    <?php
     } else {
     
         $parcours = new Parcours(array(

@@ -61,16 +61,20 @@ class ProposeManager{
 		return $listVilles;
     }
     
-    public function getTrajetsByRecherche($par_num, $date, $precision, $heure, $sens){
+    public function getTrajetsByRecherche($par_num, $dateAvant, $dateApres, $heure, $sens){
         $listTrajets = array();
 		
 		$sql = 'SELECT * FROM propose pro
         JOIN parcours par on pro.par_num = par.par_num
-        WHERE ';
+        WHERE pro.par_num = :par_num
+        AND pro_date >= :dateAvant
+        AND pro_date <= :dateApres
+        AND pro_time > :heure
+        AND pro_sens = :pro_sens';
 		$req = $this->db->prepare($sql);
         $req->bindValue(':par_num', $par_num);
-        $req->bindValue(':pro_date', $date);
-        $req->bindValue(':precision', $precision);
+        $req->bindValue(':dateAvant', $dateAvant);
+        $req->bindValue(':dateApres', $dateApres);
         $req->bindValue(':heure', $heure);
         $req->bindValue(':pro_sens', $sens);
 		$req->execute();

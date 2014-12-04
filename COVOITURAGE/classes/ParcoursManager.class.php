@@ -90,28 +90,12 @@ class ParcoursManager{
         $req->bindValue(':vil_num2', $vil_num2);
 		$nom = $req->execute();
 		
+        $parcourss = new Parcours(null);
+        
 		while($parcours = $req->fetch(PDO::FETCH_OBJ)){
 			$parcourss = new Parcours($parcours);
 		}
 		$req->closeCursor();
-		return $parcourss;
-    }
-    
-    public function getParcoursByVillesWithOrdre($vil_num1, $vil_num2){
-        $req = $this->db->prepare('SELECT * FROM parcours
-            WHERE vil_num1 = :vil_num1
-            AND vil_num2 = :vil_num2');
-        $req->bindValue(':vil_num1', $vil_num1);
-        $req->bindValue(':vil_num2', $vil_num2);
-		$nom = $req->execute();
-		
-		while($parcours = $req->fetch(PDO::FETCH_OBJ)){
-			$parcourss = new Parcours($parcours);
-		}
-		$req->closeCursor();
-        if($parcours == null){
-            return null;
-        }
 		return $parcourss;
     }
     
