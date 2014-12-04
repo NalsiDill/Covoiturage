@@ -60,5 +60,7 @@ class ProposeManager{
 		
 		return $listVilles;
     }
+    
+    public function getVillesByRecherche($vi
 
 }

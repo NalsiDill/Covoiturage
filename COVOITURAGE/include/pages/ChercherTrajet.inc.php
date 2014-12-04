@@ -39,7 +39,7 @@ $villesDepart = $proManager->getVillesBySens();
 	if(empty($_POST['vil_depart']) && empty($_POST['vil_arrivee'])){
 ?>
 Ville de départ : 
- <form name="ajoutParcours" id="ajoutParcours" action="index.php?page=9" method="POST">
+ <form name="rechercheParcours1" id="rechercheParcours1" action="index.php?page=10" method="POST">
 		<select name="vil_depart" required>
 			<option></option>
 			<?php
@@ -59,7 +59,7 @@ Ville de départ :
 	$villesArrivee = $pManager->getAllVillesArrivée($_POST['vil_depart']);
 ?>
 
-     <form name="ajoutParcours" id="ajoutParcours" action="index.php?page=9" method="POST">
+     <form name="rechercheParcours2" id="rechercheParcours2" action="index.php?page=10" method="POST">
            
         Ville de départ : <b><?php echo $ville->getVil_nom(); ?></b><br/>              
 		Ville d'arrivée : <select name="vil_arrivee" required>
@@ -71,9 +71,31 @@ Ville de départ :
 		</select> <br/>
            
         Date de départ : <input type="date" name="date" value="<?php echo date("d/m/Y"); ?>" pattern="[0-3][0-9]/[0-1][0-9]/20[1-9][0-9]" size="8" required/>
-           
+        Précision : 
+        <select name="precision" required>
+            <option value="0">Ce jour</option>
+            <option value="1">+/- 1 jour</option>
+            <option value="2">+/- 2 jours</option>
+            <option value="3">+/- 3 jours</option>
+        </select>
+        <br/>
+         A partir de :
+         <select name="apartirde" required>
+            <?php
+            for($i = 0; $i < 24; $i++){
+                if ($i < 10){
+                    echo "<option value=\"".$i."\">0".$i."h</option>\n";  
+                } else {
+                    echo "<option value=\"".$i."\">".$i."h</option>\n";  
+                }
+            }
+            ?>
+        </select>
+        <br/>
 		<input type="submit" value="Valider" />
 	</form>
-
-
+<?php
+} if (!empty($_POST['vil_depart']) && !empty($_POST['vil_arrivee'])) {
+?>
+    
 <?php } ?>
