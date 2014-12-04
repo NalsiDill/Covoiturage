@@ -19,7 +19,11 @@
 			<li><a href="index.php?page=8">Lister</a></li>
 		</ul>
 
+<<<<<<< HEAD
+        <?php if (isset($_SESSION['login']) && $_SESSION['login'] != null){ ?>
+=======
         <?php if (!isset($_SESSION['login'])){ ?>
+>>>>>>> origin/master
 		<p><img src="image/trajet.png" class="imagMenu" alt="Trajet"/>Trajet</p>
 		<ul>
 			<li><a href="index.php?page=9">Proposer</a></li>

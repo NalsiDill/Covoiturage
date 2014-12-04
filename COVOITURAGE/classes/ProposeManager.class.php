@@ -61,6 +61,7 @@ class ProposeManager{
 		return $listVilles;
     }
     
-    public function getVillesByRecherche($vi
-
+    public function getVillesByRecherche($vi){
+        
+    }
 }
