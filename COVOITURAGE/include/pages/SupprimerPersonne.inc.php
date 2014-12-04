@@ -26,8 +26,9 @@
 		$personne = $pManager->getPersonneByID($_POST["noPers"]);
 ?>
 </p>
-  Supprimer <?php echo $personne->getPer_prenom(); ?>  <?php echo $personne->getPer_nom(); ?> des registres
+  <?php echo $personne->getPer_prenom(); ?>  <?php echo $personne->getPer_nom(); ?> a été supprimé des registres
 </p>
 <?php
+		$pManager->delPersonneByID($_POST["noPers"]);
 }
 ?>

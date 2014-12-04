@@ -37,6 +37,29 @@ class PersonneManager{
 		
 		return $retour;
 	}
+	// suppression de personne existante
+	public function delPersonneByID($noPers){
+		$req = $this->db->prepare(
+		'DELETE FROM Etudiant
+		WHERE per_num = :per_num');
+		$req->bindValue(':per_num', $noPers);
+		$retour = $req->execute();
+		
+		
+		$req = $this->db->prepare(
+		'DELETE FROM Salarie
+		WHERE per_num = :per_num');
+		$req->bindValue(':per_num', $noPers);
+		$retour = $req->execute();
+		
+		$req = $this->db->prepare(
+		'DELETE FROM Personne
+		WHERE per_num = :per_num');
+		$req->bindValue(':per_num', $noPers);
+		$retour = $req->execute();
+				
+		return $retour;
+	}
 	
 	public function getAllPersonnes(){
 		$listePersonnes = array();
