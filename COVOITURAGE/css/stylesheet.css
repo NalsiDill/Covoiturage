@@ -40,9 +40,6 @@ body{
 	font-weight:bold;		
 	text-shadow:1px 1px #111111, 2px 2px #000000;	
 }
-/*.colonne:nth-child(3) {
-		vertical-align:middle;
-}*/
 
 #entete{
 	width:1050px;
@@ -216,7 +213,6 @@ h1{
 	}
 	
 a:hover{
-
 	text-decoration: underline;
 }
 #menu a:hover{
@@ -231,8 +227,6 @@ table{
 	color:#222222;
 	font-weight:bold;
 	text-decoration: none;	
-}
-#connect a :visited{
 }
 #ajoutPersonne input{
 	display:inline-block;

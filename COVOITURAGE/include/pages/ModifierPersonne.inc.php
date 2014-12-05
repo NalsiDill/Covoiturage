@@ -36,10 +36,16 @@ if(empty($_POST['nom']) &&				// Premier accès à la page
 </p>
 	<form name="modifierPersonne" id="modifierPersonne" action="index.php?page=3" method="post">
 		<?php $_SESSION['per_num'] = $_GET['noPers'] ?>
-		Nom : <input type="text" name="nom" value="<?php echo $personne->getPer_nom() ?>" required/><br/>
-		Prenom : <input type="text" name="prenom" value="<?php echo $personne->getPer_prenom() ?>" required/><br/>
-		Téléphone : <input type="text" name="telephone" value="<?php echo $personne->getPer_tel() ?>" required/><br/>
-		Mail : <input type="text" name="mail" value="<?php echo $personne->getPer_mail() ?>" required/><br/>
+		<table>
+			<tr>
+				<td>Nom<br/><input type="text" name="nom" value="<?php echo $personne->getPer_nom() ?>" required/></td>
+				<td>Prenom<br/><input type="text" name="prenom" value="<?php echo $personne->getPer_prenom() ?>" required/></td>
+			</tr>
+			<tr>
+				<td>Téléphone<br/><input type="text" name="telephone" value="<?php echo $personne->getPer_tel() ?>" required/></td>
+				<td>Mail<br/><input type="text" name="mail" value="<?php echo $personne->getPer_mail() ?>" required/></td>
+			</tr>
+		</table>
 			<input type="submit" value="Valider" />
 	</form>
 <?php
