@@ -6,21 +6,19 @@
 ?>
 <h1>Liste des personnes</h1>
 <table border=1>
-	<tr><th>Numéro</th><th>Nom</th><th>Prénom</th></tr>
+	<tr><th>Nom</th><th>Prénom</th></tr>
 	<?php
 	foreach ($personnes as $personne){ ?>
 		<tr>
-			<td id="noPers">
-				<a href="index.php?page=2&noPers=<?php echo $personne->getPer_num();?>" ><!--utiliser method get-->
-					<?php echo $personne->getPer_num();?>
-				</a>
-			</td> 
 			<td>
 				<?php echo $personne->getPer_nom(); ?>
 			</td>
 			<td>
 				<?php echo $personne->getPer_prenom(); ?>
 			</td>
+			<td>
+				<a href="index.php?page=2&noPers=<?php echo $personne->getPer_num();?>" ><img src="./image/loupe.png"/> </a>
+			</td> 
 			<td>
 				<a href="index.php?page=3&noPers=<?php echo $personne->getPer_num(); ?>"><img src="./image/modifier.png"/> </a>
 			</td>
