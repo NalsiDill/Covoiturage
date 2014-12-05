@@ -225,6 +225,15 @@ table{
 	text-decoration: none;	
 }
 #connect a :visited{
+}
 #ajoutPersonne input{
 	display:inline-block;
+}
+td, th{
+	border-right: none;
+	border-left: none;
+	padding: 10px;
+}
+border{
+	border : none;
 }
