@@ -5,8 +5,6 @@
 		<ul>			
 			<li><a href="index.php?page=1">Ajouter</a></li>
 			<li><a href="index.php?page=2">Lister</a></li>
-			<li><a href="index.php?page=3">Modifier</a></li>
-			<li><a href="index.php?page=4">Supprimer</a></li>
 		</ul>
 		<p><img src="image/parcours.gif" class="imagMenu" alt="Parcours"/>Parcours</p>
 		<ul>

@@ -45,9 +45,14 @@ class PersonneManager{
 		$req->bindValue(':per_num', $noPers);
 		$retour = $req->execute();
 		
-		
 		$req = $this->db->prepare(
 		'DELETE FROM Salarie
+		WHERE per_num = :per_num');
+		$req->bindValue(':per_num', $noPers);
+		$retour = $req->execute();
+		
+		$req = $this->db->prepare(
+		'DELETE FROM Propose
 		WHERE per_num = :per_num');
 		$req->bindValue(':per_num', $noPers);
 		$retour = $req->execute();

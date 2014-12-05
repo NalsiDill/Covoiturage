@@ -8,13 +8,13 @@ if(empty($_POST['nom']) &&				// Premier accès à la page
    empty($_POST['telephone']) &&
    empty($_POST['mail']))
   {
-	if (empty($_POST["noPers"]))
+	if (empty($_GET["noPers"]))
 	{
 		
 	$personnes = $pManager->getAllPersonnes();
 		
 ?>
-<form name="supprPers" id="supprPers" action="index.php?page=3" method="POST">
+<form name="supprPers" id="supprPers" action="index.php?page=3" method="get">
 
 	Modifier :
 		<select name="noPers">
@@ -29,13 +29,13 @@ if(empty($_POST['nom']) &&				// Premier accès à la page
 </form>
 <?php
 	}else{
-		$personne = $pManager->getPersonneByID($_POST["noPers"]);
+		$personne = $pManager->getPersonneByID($_GET["noPers"]);
 ?>
 </p>
   Modifier les détails du compte "<?php echo $personne->getPer_login(); ?>"
 </p>
 	<form name="modifierPersonne" id="modifierPersonne" action="index.php?page=3" method="post">
-		<?php $_SESSION['per_num'] = $_POST['noPers'] ?>
+		<?php $_SESSION['per_num'] = $_GET['noPers'] ?>
 		Nom : <input type="text" name="nom" value="<?php echo $personne->getPer_nom() ?>" required/><br/>
 		Prenom : <input type="text" name="prenom" value="<?php echo $personne->getPer_prenom() ?>" required/><br/>
 		Téléphone : <input type="text" name="telephone" value="<?php echo $personne->getPer_tel() ?>" required/><br/>
