@@ -1,6 +1,5 @@
 <?php
 class Salarie extends Personne{
-	private $per_num;
 	private $sal_telprof;
 	private $fon_num;
 	
@@ -21,9 +20,6 @@ class Salarie extends Personne{
 	}
 	
 	// Setters
-	public function setPer_num($valeur){
-		$this->per_num = $valeur;
-	}
 	public function setSal_telprof($valeur){
 		$this->sal_telprof = $valeur;
 	}
@@ -32,9 +28,6 @@ class Salarie extends Personne{
 	}
 	
 	// Getters
-	public function getPer_num(){
-		return $this->per_num;
-	}
 	public function getSal_telprof(){
 		return $this->sal_telprof;
 	}
