@@ -1,6 +1,5 @@
 <?php
 class Etudiant extends Personne{
-	private $per_num;
 	private $dep_num;
 	private $div_num;
 	
@@ -21,9 +20,6 @@ class Etudiant extends Personne{
 	}
 	
 	// Setters
-	public function setPer_num($valeur){
-		$this->per_num = $valeur;
-	}
 	public function setDep_num($valeur){
 		$this->dep_num = $valeur;
 	}
@@ -32,9 +28,6 @@ class Etudiant extends Personne{
 	}
 	
 	// Getters
-	public function getPer_num(){
-		return $this->per_num;
-	}
 	public function getDep_num(){
 		return $this->dep_num;
 	}
