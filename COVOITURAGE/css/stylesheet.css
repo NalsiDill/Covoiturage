@@ -96,7 +96,17 @@ body{
 }
 #menu a{
 	color:#222222;
-	text-decoration: none;	
+	text-decoration: none;
+	
+	transition-duration: 0.2s;
+	transition-timing-function: ease-out;
+	
+	border-radius: 15px;
+	padding: 5px;
+} 
+#menu a:hover{
+	background-color: #393939;
+	color: white;
 }
 #menu a :visited{
 	color:#222222;
@@ -104,9 +114,12 @@ body{
 }
 
 #menuInt{
-	margin-top: 2px;
+	margin: 10px;
 	margin-left: 50px;	
 	min-height:367px;
+}
+#menuInt li{
+	padding: 10px;
 }
 
 #texte{
@@ -157,8 +170,7 @@ body{
 	border:2px #AAAAAA solid;
 	background-color:#444444; 
 	font-size:12pt;
-    font-weight:bold;
-    font-decoration:none; 
+    font-weight:bold; 
     font-family:Verdana, Arial, sans-serif; 
     color:#FFFFFF; 
     width:125px;
@@ -203,21 +215,17 @@ h1{
 	font-size:30px;position:relative;top:-8px;
 	}
 	
-* a:hover{
+a:hover{
 
 	text-decoration: underline;
 }
 #menu a:hover{
-	text-decoration: underline;
 	font-weight: bold;
 }
 
 table{
+	border: none;
 	margin: 20px auto;}
-
-
-
-
 
 #connect a{
 	color:#222222;
@@ -230,10 +238,18 @@ table{
 	display:inline-block;
 }
 td, th{
+	border-radius: 20px;
 	border-right: none;
 	border-left: none;
 	padding: 10px;
 }
 border{
 	border : none;
+}
+tr {
+	margin-top: 30px;
+}
+
+ul {
+	list-style-image: url('../image/volant.png');
 }

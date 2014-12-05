@@ -57,7 +57,7 @@
 ?>
 <h1>Détail sur l'étudiant <?php echo $personne->getPer_nom()?></h1>
 
-<table border=1>
+<table>
 	<tr><th>Prénom</th><th>Mail</th><th>Tel</th><th>Département</th><th>Ville</th></tr>
 	<tr>
 		<td><?php echo $personne->getPer_prenom()?></td>
@@ -79,7 +79,7 @@
 ?>
 <h1>Détail sur le salarié <?php echo $personne->getPer_nom()?></h1>
 
-<table border=1>
+<table>
 	<tr><th>Prénom</th><th>Mail</th><th>Tel</th><th>Tel pro</th><th>Fonction</th></tr>
 	<tr>
 		<td><?php echo $personne->getPer_prenom()?></td>
