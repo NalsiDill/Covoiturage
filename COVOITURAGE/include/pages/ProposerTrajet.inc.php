@@ -10,8 +10,9 @@
 <?php 
 	if(empty($_POST['vil_depart']) && empty($_POST['vil_arrivee'])){
 ?>
-<h2>Ville de départ</h2>
 	   <form name="ajoutParcours" id="ajoutParcours" action="index.php?page=9" method="POST">
+        Ville de départ
+           <br>
 		<select name="vil_depart" required>
 			<option></option>
 			<?php
@@ -19,6 +20,8 @@
 					echo "<option value=\"".$ville->getVil_num()."\">".$ville->getVil_nom()."</option>\n";
 				} ?>
 		</select>
+           <br>
+           <br>
 		<input type="submit" value="Valider" />
 	</form>
 
@@ -32,7 +35,6 @@
         
 	$villesArrivee = $pManager->getAllVillesArrivée($_POST['vil_depart']);
 ?>
-<h2>Ville d'arrivée</h2>
 
 	   <form name="ajoutParcours" id="ajoutParcours" action="index.php?page=9" method="POST">
 <table>

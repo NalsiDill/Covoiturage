@@ -10,17 +10,20 @@ $vManager = new VilleManager($db);
 	if(empty($_POST['vil_depart']) && empty($_POST['vil_arrivee'])){
         $villesDepart = $proManager->getVillesBySens();
 ?>
-Ville de départ : 
  <form name="rechercheParcours1" id="rechercheParcours1" action="index.php?page=10" method="POST">
-		<select name="vil_depart" required>
-			<option></option>
-			<?php
-				foreach ($villesDepart as $ville){ 
-					echo "<option value=\"".$ville->getVil_num()."\">".$ville->getVil_nom()."</option>\n";
-				} ?>
-		</select>
-		<input type="submit" value="Valider" />
-	</form>
+     Ville de départ
+     <br>
+     <select name="vil_depart" required>
+        <option></option>
+        <?php
+            foreach ($villesDepart as $ville){ 
+                echo "<option value=\"".$ville->getVil_num()."\">".$ville->getVil_nom()."</option>\n";
+            } ?>
+     </select>
+     <br>
+     <br>
+     <input type="submit" value="Valider" />
+</form>
 
 
 <?php
@@ -33,25 +36,29 @@ Ville de départ :
 ?>
 
      <form name="rechercheParcours2" id="rechercheParcours2" action="index.php?page=10" method="POST">
-           
-        Ville de départ : <b><?php echo $ville->getVil_nom(); ?></b><br>              
-		Ville d'arrivée : <select name="vil_arrivee" required>
-			<option></option>
-			<?php
-				foreach ($villesArrivee as $ville){ 
-					echo "<option value=\"".$ville->getVil_num()."\">".$ville->getVil_nom()."</option>\n";
-				} ?>
-		</select> <br>
-           
-        Date de départ : <input type="date" name="date" value="<?php echo date("d/m/Y"); ?>" pattern="[0-3][0-9]/[0-1][0-9]/20[1-9][0-9]" size="8" required/>
-        Précision : 
-        <select name="precision" required>
-            <option value="0">Ce jour</option>
-            <option value="1">+/- 1 jour</option>
-            <option value="2">+/- 2 jours</option>
-            <option value="3">+/- 3 jours</option>
-        </select>
-        <br>
+        <table>
+            <tr>
+                <td>Ville de départ<br><b><?php echo $ville->getVil_nom(); ?></b></td>            
+                <td>Ville d'arrivée<br>
+                    <select name="vil_arrivee" required>
+                    <option></option>
+                    <?php
+                        foreach ($villesArrivee as $ville){ 
+                            echo "<option value=\"".$ville->getVil_num()."\">".$ville->getVil_nom()."</option>\n";
+                        } ?>
+                    </select></td>
+           </tr>
+           <tr>
+                <td>Date de départ<br><input type="date" name="date" value="<?php echo date("d/m/Y"); ?>" pattern="[0-3][0-9]/[0-1][0-9]/20[1-9][0-9]" size="8" required/></td>
+                <td>Précision<br>
+                <select name="precision" required>
+                    <option value="0">Ce jour</option>
+                    <option value="1">+/- 1 jour</option>
+                    <option value="2">+/- 2 jours</option>
+                    <option value="3">+/- 3 jours</option>
+                </select></td>
+            </tr>
+        </table>
          A partir de :
          <select name="apartirde" required>
             <?php
@@ -64,6 +71,7 @@ Ville de départ :
             }
             ?>
         </select>
+        <br>
         <br>
 		<input type="submit" value="Valider" />
 	</form>
