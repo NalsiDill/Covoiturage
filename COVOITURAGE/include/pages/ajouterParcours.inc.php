@@ -4,30 +4,30 @@
 $db = new MyPdo();
 
 
-if(empty($_POST['vil_num1']) || empty($_POST['vil_num2']) || empty($_POST['nb_km']) || $_POST['vil_num1'] === $_POST['vil_num2']){
+if(empty($_POST['vil_num1']) || empty($_POST['vil_num2']) || empty($_POST['nb_km'])){
 	
 	$vManager = new VilleManager($db);
 	$villes = $vManager->getAllVilles();
 ?>
 	<form name="ajoutParcours" id="ajoutParcours" action="index.php?page=5" method="POST">
 	Ville 1 :
-		<select name="vil_num1">
-			<option value="0">...</option>
+		<select name="vil_num1" required>
+			<option></option>
 			<?php
 				foreach ($villes as $ville){ 
 					echo "<option value=\"".$ville->getVil_num()."\">".$ville->getVil_nom()."</option>\n";
 				} ?>
 		</select>
 	Ville 2 :
-		<select name="vil_num2">
-			<option value="0">...</option>
+		<select name="vil_num2" required>
+			<option></option>
 			<?php
 				foreach ($villes as $ville){ 
 					echo "<option value=\"".$ville->getVil_num()."\">".$ville->getVil_nom()."</option>\n";
 				} ?>
 		</select>
 	Nombre de kilomètre(s) :
-		<input type="text" size='20' name="nb_km" />
+		<input type="text" size='20' name="nb_km" required/>
 		
 		<input type="submit" value="Valider" />
 	</form>
@@ -38,8 +38,12 @@ else{
 	$pManager = new ParcoursManager($db);
     
     $parcoursVerif = $pManager->getParcoursByVilles($_POST['vil_num2'], $_POST['vil_num1']);
-    
-    if($parcoursVerif->getPar_num() != null){
+    if ($_POST['vil_num1'] === $_POST['vil_num2']){
+         ?>
+        <img src="./image/erreur.png" alt="Pas Validé">
+         Impossible de faire un parcours avec les mêmes villes !
+    <?php
+    } else if ($parcoursVerif->getPar_num() != null){
         ?>
         <img src="./image/erreur.png" alt="Pas Validé">
          Ce parcours existe déjà !

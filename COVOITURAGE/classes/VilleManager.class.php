@@ -32,7 +32,7 @@ class VilleManager{
 	}
 	
 	public function getVilleByID($numeroVille){
-		$req = $this->db->prepare('SELECT vil_nom FROM ville WHERE vil_num = :num');
+		$req = $this->db->prepare('SELECT * FROM ville WHERE vil_num = :num');
 		$req->bindValue(':num', $numeroVille);
 		$nom = $req->execute();
 		
@@ -44,5 +44,22 @@ class VilleManager{
 		return $villee;
 	}
 	
+    public function getVilleByNom($nomVille){
+        $req = $this->db->prepare('SELECT * FROM ville WHERE vil_nom = :nom');
+		$req->bindValue(':nom', $nomVille);
+		$nom = $req->execute();
+		
+        $villee = new Ville(null);
+        
+		while($ville = $req->fetch(PDO::FETCH_OBJ)){
+			$villee = new Ville($ville);
+		}
+		$req->closeCursor();
+        
+        if($villee == null){
+            return null;
+        }
+		return $villee;
+    }
 	
 }

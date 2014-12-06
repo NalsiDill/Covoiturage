@@ -4,11 +4,11 @@ $db = new MyPdo();
 $proManager = new ProposeManager($db);
 $pManager = new ParcoursManager($db);
 $vManager = new VilleManager($db);
-$villesDepart = $proManager->getVillesBySens();
 ?>
 
 <?php 
 	if(empty($_POST['vil_depart']) && empty($_POST['vil_arrivee'])){
+        $villesDepart = $proManager->getVillesBySens();
 ?>
 Ville de départ : 
  <form name="rechercheParcours1" id="rechercheParcours1" action="index.php?page=10" method="POST">
