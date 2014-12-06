@@ -32,7 +32,7 @@ if(empty($_POST['nom']) &&				// Premier accès à la page
 			</tr>
 		</table>
 		Catégorie<br><input type="radio" name="categorie" value="etudiant" required>Etudiant 
-					<input type="radio" name="categorie" value="personnel" required>Personnel<br/>
+					<input type="radio" name="categorie" value="personnel" required>Personnel<br>
 		<br>
 		<br>
 		<input type="submit" value="Valider" />
@@ -73,7 +73,7 @@ if(!empty($_POST['nom']) &&
                     echo "<option value=\"".$annee->getDiv_num()."\">".$annee->getDiv_nom()."</option>\n";
 				} ?>
 		</select>
-        <br/>
+        <br>
         Département : 
         <select name="departement" required>
 			<option></option>
@@ -82,7 +82,7 @@ if(!empty($_POST['nom']) &&
                     echo "<option value=\"".$departement->getDep_num()."\">".$departement->getDep_nom()."</option>\n";
 				} ?>
 		</select>
-        <br/>
+        <br>
         <input type="submit" value="Valider" />
 	</form>
 <?php 	}
@@ -111,8 +111,8 @@ if(!empty($_POST['nom']) &&
 		</tr>
 	</table>    
 	
-        <br/>
-        <br/>
+        <br>
+        <br>
         <input type="submit" value="Valider" />
 	</form>	
 

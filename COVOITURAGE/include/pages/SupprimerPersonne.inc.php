@@ -18,7 +18,7 @@
 					echo "<option value=\"".$personne->getPer_num()."\">".$personne->getPer_nom()."</option>\n";
 				} ?>
 		</select>
-	<br/>
+	<br>
 	<input type="submit" value="Valider" />
 </form>
 <?php

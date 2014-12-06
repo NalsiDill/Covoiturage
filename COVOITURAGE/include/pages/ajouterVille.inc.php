@@ -4,8 +4,10 @@
 if(empty($_POST['vil_nom'])){
 ?>
 	<form name="ajoutVille" id="ajoutVille" action="index.php?page=7" method="POST">
-	Nom :
+	Nom
+        <br>
 		<input type="text" size='20' name="vil_nom" required/>
+        <br><br>
 		<input type="submit" value="Valider" />
 	</form>
 	

@@ -10,25 +10,36 @@ if(empty($_POST['vil_num1']) || empty($_POST['vil_num2']) || empty($_POST['nb_km
 	$villes = $vManager->getAllVilles();
 ?>
 	<form name="ajoutParcours" id="ajoutParcours" action="index.php?page=5" method="POST">
-	Ville 1 :
-		<select name="vil_num1" required>
+        <table>
+            <tr>
+	           <td>Ville 1
+                   <br>
+                   <select name="vil_num1" required>
 			<option></option>
 			<?php
 				foreach ($villes as $ville){ 
 					echo "<option value=\"".$ville->getVil_num()."\">".$ville->getVil_nom()."</option>\n";
 				} ?>
 		</select>
-	Ville 2 :
-		<select name="vil_num2" required>
-			<option></option>
-			<?php
-				foreach ($villes as $ville){ 
-					echo "<option value=\"".$ville->getVil_num()."\">".$ville->getVil_nom()."</option>\n";
-				} ?>
-		</select>
-	Nombre de kilomètre(s) :
-		<input type="text" size='20' name="nb_km" required/>
-		
+               </td>
+                
+                <td>Ville 2
+                    <br>
+                    <select name="vil_num2" required>
+                <option></option>
+                <?php
+                    foreach ($villes as $ville){ 
+                        echo "<option value=\"".$ville->getVil_num()."\">".$ville->getVil_nom()."</option>\n";
+                    } ?>
+            </select>
+                    </td>
+            </tr>
+        </table>
+	Nombre de kilomètre(s)
+        <br>
+		<input type="text" size='3' name="nb_km" required/>
+        <br>
+        <br>
 		<input type="submit" value="Valider" />
 	</form>
 	

@@ -34,14 +34,14 @@ Ville de départ :
 
      <form name="rechercheParcours2" id="rechercheParcours2" action="index.php?page=10" method="POST">
            
-        Ville de départ : <b><?php echo $ville->getVil_nom(); ?></b><br/>              
+        Ville de départ : <b><?php echo $ville->getVil_nom(); ?></b><br>              
 		Ville d'arrivée : <select name="vil_arrivee" required>
 			<option></option>
 			<?php
 				foreach ($villesArrivee as $ville){ 
 					echo "<option value=\"".$ville->getVil_num()."\">".$ville->getVil_nom()."</option>\n";
 				} ?>
-		</select> <br/>
+		</select> <br>
            
         Date de départ : <input type="date" name="date" value="<?php echo date("d/m/Y"); ?>" pattern="[0-3][0-9]/[0-1][0-9]/20[1-9][0-9]" size="8" required/>
         Précision : 
@@ -51,7 +51,7 @@ Ville de départ :
             <option value="2">+/- 2 jours</option>
             <option value="3">+/- 3 jours</option>
         </select>
-        <br/>
+        <br>
          A partir de :
          <select name="apartirde" required>
             <?php
@@ -64,7 +64,7 @@ Ville de départ :
             }
             ?>
         </select>
-        <br/>
+        <br>
 		<input type="submit" value="Valider" />
 	</form>
 <?php

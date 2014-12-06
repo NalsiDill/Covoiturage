@@ -228,14 +228,14 @@ table{
 	font-weight:bold;
 	text-decoration: none;	
 }
-#ajoutPersonne input{
+form input{
 	display:inline-block;
 }
 td, th{
 	border-radius: 20px;
 	border-right: none;
 	border-left: none;
-	padding: 10px;
+	padding: 5px 10px;
 }
 border{
 	border : none;

@@ -24,7 +24,7 @@ if(empty($_POST['nom']) &&				// Premier accès à la page
 					echo "<option value=\"".$personne->getPer_num()."\">".$personne->getPer_nom()."</option>\n";
 				} ?>
 		</select>
-	<br/>
+	<br>
 	<input type="submit" value="Valider" />
 </form>
 <?php
@@ -38,12 +38,12 @@ if(empty($_POST['nom']) &&				// Premier accès à la page
 		<?php $_SESSION['per_num'] = $_GET['noPers'] ?>
 		<table>
 			<tr>
-				<td>Nom<br/><input type="text" name="nom" value="<?php echo $personne->getPer_nom() ?>" required/></td>
-				<td>Prenom<br/><input type="text" name="prenom" value="<?php echo $personne->getPer_prenom() ?>" required/></td>
+				<td>Nom<br><input type="text" name="nom" value="<?php echo $personne->getPer_nom() ?>" required/></td>
+				<td>Prenom<br><input type="text" name="prenom" value="<?php echo $personne->getPer_prenom() ?>" required/></td>
 			</tr>
 			<tr>
-				<td>Téléphone<br/><input type="text" name="telephone" value="<?php echo $personne->getPer_tel() ?>" required/></td>
-				<td>Mail<br/><input type="text" name="mail" value="<?php echo $personne->getPer_mail() ?>" required/></td>
+				<td>Téléphone<br><input type="text" name="telephone" value="<?php echo $personne->getPer_tel() ?>" required/></td>
+				<td>Mail<br><input type="text" name="mail" value="<?php echo $personne->getPer_mail() ?>" required/></td>
 			</tr>
 		</table>
 			<input type="submit" value="Valider" />
