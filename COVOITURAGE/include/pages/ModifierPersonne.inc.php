@@ -3,7 +3,7 @@
 <?php
 	$db = new MyPdo();
 	$pManager = new PersonneManager($db);
-if(empty($_POST['nom']) &&				// Premier accès à la page
+if(empty($_POST['nom']) &&				
    empty($_POST['prenom']) &&
    empty($_POST['telephone']) &&
    empty($_POST['mail']))
@@ -53,7 +53,6 @@ if(empty($_POST['nom']) &&				// Premier accès à la page
 }
 else
 {
-	// formulaire de modification bien rempli
 
 	$personne = new Personne(array(
 		"per_num" => $_SESSION['per_num'],
@@ -64,8 +63,8 @@ else
 	));
 	$pManager->update($personne);
 ?>
-
-
+    <img src="./image/valid.png" alt="Validé">
 <?php
+    echo "Les informations de ".$_POST['prenom']." ".$_POST['nom']." ont bien été modifié.";
 }
 ?>

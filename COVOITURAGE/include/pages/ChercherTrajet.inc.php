@@ -90,9 +90,12 @@ Ville de départ :
         
         $listeTrajets = $proManager->getTrajetsByRecherche($par_num, $dateAvant, $dateApres, $heure, $sens);
         
-         /*if*/
-?>
-<?php  
+    if(count($listeTrajets) == 0){
+              ?>
+        <img src="./image/erreur.png" alt="Pas Validé">
+         Désolé, pas de trajet disponible !
+    <?php
+    } else {
     $perManager = new PersonneManager($db);
 ?>
     <table border=1>
@@ -113,6 +116,7 @@ Ville de départ :
         </tr>
         <?php } ?>
     </table>
-<?php 
+<?php
     }
+}
 ?>

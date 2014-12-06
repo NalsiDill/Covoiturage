@@ -44,7 +44,7 @@ body{
 #entete{
 	width:1050px;
 	margin:auto;
-	display:table
+	display:table;
 }
 
 #connect{
@@ -134,7 +134,7 @@ body{
 
 #footer{
 	width:100%;
-	height:50px;
+	height: 60px;
 	padding-top:10px;
 	background-color:#222222;
 	border-top:solid #444444 8px;	
@@ -151,7 +151,9 @@ body{
 .centreImage {
     display: block;
     margin-left: auto;
-    margin-right: auto }
+    margin-right: auto;
+    margin-top : 20px;
+}
     
 .centrerBlock{
 	margin:auto;
@@ -185,9 +187,9 @@ body{
 	margin:0px 5px 5px 5px;
 	padding:5px;
 	font-size:12pt;
-   min-height:25px;
-   border-radius:10px;	
-   border:1px #222222 solid;
+    min-height:25px;
+    border-radius:10px;	
+    border:1px #222222 solid;
 	box-shadow:1px 1px 3px #000000 inset;
 }
 
@@ -221,7 +223,8 @@ a:hover{
 
 table{
 	border: none;
-	margin: 20px auto;}
+	margin: 20px auto;
+}
 
 #connect a{
 	color:#222222;

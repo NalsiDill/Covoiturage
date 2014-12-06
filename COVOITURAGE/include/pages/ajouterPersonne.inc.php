@@ -65,23 +65,34 @@ if(!empty($_POST['nom']) &&
 ?>
     <h1>Ajouter un étudiant</h1>
 	<form name="ajoutEtudiant" id="ajoutEtudiant" action="index.php?page=1" method="POST">
-        Année : 
-		<select name="annee" required>
-			<option></option>
-			<?php
-				foreach ($annees as $annee){
-                    echo "<option value=\"".$annee->getDiv_num()."\">".$annee->getDiv_nom()."</option>\n";
-				} ?>
+        <table>
+            <tr>
+            <td>Année
+            <br>
+            <select name="annee" required>
+                <option></option>
+                <?php
+                    foreach ($annees as $annee){
+                        echo "<option value=\"".$annee->getDiv_num()."\">".$annee->getDiv_nom()."</option>\n";
+                    } ?>
+            </select>
+            </td>
+            </tr>
+            <br>
+            <tr>
+            <td>
+            Département
+            <br>
+            <select name="departement" required>
+                <option></option>
+                <?php
+                    foreach ($departements as $departement){
+                        echo "<option value=\"".$departement->getDep_num()."\">".$departement->getDep_nom()."</option>\n";
+                    } ?>
+            </td>
+            </tr>
 		</select>
-        <br>
-        Département : 
-        <select name="departement" required>
-			<option></option>
-			<?php
-				foreach ($departements as $departement){
-                    echo "<option value=\"".$departement->getDep_num()."\">".$departement->getDep_nom()."</option>\n";
-				} ?>
-		</select>
+        </table>
         <br>
         <input type="submit" value="Valider" />
 	</form>
@@ -111,7 +122,6 @@ if(!empty($_POST['nom']) &&
 		</tr>
 	</table>    
 	
-        <br>
         <br>
         <input type="submit" value="Valider" />
 	</form>	
